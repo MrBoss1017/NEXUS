@@ -1,12 +1,10 @@
-<div align="center">
+<p align="center">
+  <img width="3584" height="1184" alt="banner" src="https://github.com/user-attachments/assets/362bf073-854f-4643-ad81-fd1bca58994d" />
+</p>
 
-<!-- Optional: If you make a banner image later, put it in docs/banner.png and uncomment the line below -->
-<!-- ![NEXUS: Cosmic Dominion](docs/banner.png) -->
-
-# NEXUS
-### COSMIC DOMINION · MINECRAFT 26.3
-
-**Reality bends to the Core.**
+<p align="center">
+  <h3 align="center">Reality bends to the core.</h3>
+</p>
 
 **Nineteen cosmic powers. A 34-phase celestial finale. A world that remembers the awakening.**
 
