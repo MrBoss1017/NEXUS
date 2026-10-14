@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "AEA",
+    "SNS",
+    "AEA"
+  ],
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "E": "minecraft:ender_pearl",
+    "S": "minecraft:echo_shard",
+    "N": "minecraft:nether_star"
+  },
+  "result": {
+    "id": "nexus:nexus_core",
+    "count": 1
+  }
+}

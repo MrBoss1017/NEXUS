@@ -1,0 +1,102 @@
+PASS creative tab contains all 25 custom items
+PASS boss activation
+PASS 600 HP boss attribute
+PASS healing mixin blocks boss regeneration
+PASS zero-delay scheduler callback executes
+PASS cast accepted: lightning_strike
+PASS busy/cooldown gate rejects repeated cast: lightning_strike
+PASS no effect exception: lightning_strike
+PASS damage landed: lightning_strike
+PASS cast accepted: meteor_shower
+PASS busy/cooldown gate rejects repeated cast: meteor_shower
+PASS no effect exception: meteor_shower
+PASS damage landed: meteor_shower
+PASS cast accepted: dimensional_rifts
+PASS busy/cooldown gate rejects repeated cast: dimensional_rifts
+PASS no effect exception: dimensional_rifts
+PASS damage landed: dimensional_rifts
+PASS cast accepted: arcane_devastation
+PASS busy/cooldown gate rejects repeated cast: arcane_devastation
+PASS no effect exception: arcane_devastation
+PASS damage landed: arcane_devastation
+PASS cast accepted: inferno_tornado
+PASS busy/cooldown gate rejects repeated cast: inferno_tornado
+PASS no effect exception: inferno_tornado
+PASS damage landed: inferno_tornado
+PASS cast accepted: cosmic_annihilation
+PASS busy/cooldown gate rejects repeated cast: cosmic_annihilation
+PASS no effect exception: cosmic_annihilation
+PASS damage landed: cosmic_annihilation
+PASS cast accepted: quantum_slice
+PASS busy/cooldown gate rejects repeated cast: quantum_slice
+PASS no effect exception: quantum_slice
+PASS damage landed: quantum_slice
+PASS cast accepted: stellar_convergence
+PASS busy/cooldown gate rejects repeated cast: stellar_convergence
+PASS no effect exception: stellar_convergence
+PASS damage landed: stellar_convergence
+PASS cast accepted: void_storm
+PASS busy/cooldown gate rejects repeated cast: void_storm
+PASS no effect exception: void_storm
+PASS damage landed: void_storm
+PASS cast accepted: plasma_nova
+PASS busy/cooldown gate rejects repeated cast: plasma_nova
+PASS no effect exception: plasma_nova
+PASS damage landed: plasma_nova
+PASS cast accepted: cryo_blast
+PASS busy/cooldown gate rejects repeated cast: cryo_blast
+PASS no effect exception: cryo_blast
+PASS damage landed: cryo_blast
+PASS cast accepted: gravity_collapse
+PASS busy/cooldown gate rejects repeated cast: gravity_collapse
+PASS no effect exception: gravity_collapse
+PASS damage landed: gravity_collapse
+PASS cast accepted: plasma_cascade
+PASS busy/cooldown gate rejects repeated cast: plasma_cascade
+PASS no effect exception: plasma_cascade
+PASS damage landed: plasma_cascade
+PASS cast accepted: reality_shatter
+PASS busy/cooldown gate rejects repeated cast: reality_shatter
+PASS no effect exception: reality_shatter
+PASS damage landed: reality_shatter
+PASS cast accepted: solar_flare_burst
+PASS busy/cooldown gate rejects repeated cast: solar_flare_burst
+PASS no effect exception: solar_flare_burst
+PASS damage landed: solar_flare_burst
+PASS cast accepted: temporal_distortion
+PASS busy/cooldown gate rejects repeated cast: temporal_distortion
+PASS no effect exception: temporal_distortion
+PASS damage landed: temporal_distortion
+PASS cast accepted: volcanic_eruption
+PASS busy/cooldown gate rejects repeated cast: volcanic_eruption
+PASS no effect exception: volcanic_eruption
+PASS damage landed: volcanic_eruption
+PASS cast accepted: antimatter_annihilation
+PASS busy/cooldown gate rejects repeated cast: antimatter_annihilation
+PASS no effect exception: antimatter_annihilation
+PASS damage landed: antimatter_annihilation
+PASS cast accepted: typhoon_cyclone
+PASS busy/cooldown gate rejects repeated cast: typhoon_cyclone
+PASS no effect exception: typhoon_cyclone
+PASS damage landed: typhoon_cyclone
+PASS cast accepted: nexus_finale
+PASS busy/cooldown gate rejects repeated cast: nexus_finale
+PASS all 34 finale phases executed
+PASS finale completed without effect exceptions
+PASS minion recruitment
+PASS recruitment grants friendly-fire immunity
+PASS infection assigns clone role
+PASS Nexus damage cannot hit its minions
+PASS manual release removes member
+PASS release restores pre-existing NoAI state
+PASS manual release has recruitment immunity
+PASS NPC variant spawned: DARK_HERALD
+PASS NPC variant spawned: VOID_SENTINEL
+PASS NPC variant spawned: ELEMENTAL_TITAN
+PASS NPC variant spawned: SHADOW_WRAITH
+PASS NPC variant spawned: COSMIC_DESTROYER
+PASS cancel removes summoned NPCs
+PASS deactivation clears sessions and scheduler
+PASS deactivation restores original max health
+PASS effect budget remained bounded
+VERIFICATION PASSED

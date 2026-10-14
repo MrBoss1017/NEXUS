@@ -1,0 +1,76 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+base { archivesName = project.archives_base_name }
+
+repositories { mavenCentral() }
+configurations { distributedFabricApi { transitive = false } }
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    distributedFabricApi "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    // A real TOML 1.0 parser, bundled so users need only Fabric API separately.
+    implementation include('org.tomlj:tomlj:1.1.1')
+    implementation include('org.antlr:antlr4-runtime:4.11.1')
+    testImplementation platform('org.junit:junit-bom:5.13.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand(version: project.version) }
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+    withSourcesJar()
+}
+tasks.withType(JavaCompile).configureEach {
+    options.release = 25
+    options.encoding = 'UTF-8'
+}
+test { useJUnitPlatform() }
+jar {
+    from('LICENSE')
+    from('THIRD_PARTY_NOTICES.md')
+    from('licenses') { into 'META-INF/licenses' }
+}
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+// Creates both requested deliverables after compilation and tests succeed.
+tasks.register('modPackage', Zip) {
+    dependsOn build
+    archiveFileName = "Nexus-26.3-Mod-Package.zip"
+    destinationDirectory = layout.buildDirectory.dir('packages')
+    from(tasks.jar) { into 'mods' }
+    from(configurations.distributedFabricApi) { into 'mods' }
+    from('README.md')
+    from('LICENSE')
+    from('THIRD_PARTY_NOTICES.md')
+    from('docs') { into 'docs' }
+    from('licenses') { into 'licenses' }
+    from('.') {
+        into 'source'
+        exclude 'build/**', '.standalone/**', '.gradle/**', 'run/**', '.git/**', '**/__pycache__/**', '*.zip'
+    }
+}
+tasks.register('configPackage', Zip) {
+    archiveFileName = 'Nexus-26.3-Config-Package.zip'
+    destinationDirectory = layout.buildDirectory.dir('packages')
+    from('src/main/resources/nexus-default.toml') {
+        into 'config'
+        rename { 'nexus.toml' }
+    }
+    from('docs/CONFIG.md')
+}
+tasks.register('bundle') { dependsOn modPackage, configPackage }

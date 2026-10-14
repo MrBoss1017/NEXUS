@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "nexus",
+  "version": "${version}",
+  "name": "Nexus: Cosmic Dominion",
+  "description": "A Minecraft adaptation of the supplied Nexus Luau script: 20 powers, a 34-phase finale, recruitment, clones and an operator-controlled boss encounter.",
+  "authors": ["Nexus port contributors"],
+  "environment": "*",
+  "entrypoints": { "main": ["com.mrboss.nexus.NexusMod"] },
+  "mixins": ["nexus.mixins.json"],
+  "icon": "assets/nexus/icon.png",
+  "license": "MIT",
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "26.3",
+    "java": ">=25",
+    "fabric-api": ">=0.160.6"
+  }
+}

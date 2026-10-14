@@ -1,0 +1,361 @@
+# NEXUS: COSMIC DOMINION — Minecraft 26.3 / Fabric
+# Edit with a plain text editor. /nexus reload validates changes atomically.
+# 20 server ticks = 1 second. Minecraft damage is health points (2 points = 1 heart).
+# Attack damage/radius below remain in original Luau units. Global scales convert them.
+# Damage formula: source damage * 2 * damage_scale * (1 - distance/radius).
+# Armor, vanilla invulnerability frames, team/PvP rules still apply.
+
+[general]
+schema_version = 1
+boss_health = 600.0 # Source: 6000 HP; Minecraft attribute maximum is 1024.
+damage_scale = 0.02 # Baseline lightning center hit: 220 * 2 * .02 = 8.8 HP.
+source_damage_multiplier = 2.0 # ApplyDamage in the Luau doubles its input.
+range_scale = 0.1 # 10 Roblox studs -> 1 Minecraft block.
+knockback_scale = 0.008 # Velocity conversion; final impulse capped at 2 blocks/tick.
+single_boss = true
+require_core = true # Operators/creative players bypass inventory requirement.
+affect_players = true # Also honors the world's PvP rule and allied teams.
+affect_hostile_mobs = true
+affect_passive_mobs = false
+break_blocks = false # Optional small block-damage radius; no block entities/bedrock.
+allow_boss_healing = false # Recruitment intentionally bypasses this, as in source.
+global_cooldown_ticks = 6 # Source minimum: 0.3 sec.
+intro_ticks = 100
+# UUID strings only; empty replaces the source's hard-coded Roblox username.
+auto_activate_uuids = []
+
+[ai]
+detection_range_blocks = 40.0
+attack_range_blocks = 24.0
+attack_interval_ticks = 16 # Source: .8 sec. Cast locks and per-power cooldowns also apply.
+movement_speed = 0.22
+
+[minions]
+recruit_players = true
+recruit_mobs = true
+contact_range_blocks = 1.3
+recruit_cooldown_ticks = 20 # Source touch debounce: 1 sec.
+support_interval_ticks = 100 # Source: every 5 sec during the finale.
+support_heal = 1.0 # NPCs heal nearby recruited allies once per second.
+npc_lifetime_ticks = 2400
+npc_health_scale = 0.1
+npc_damage_scale = 1.0
+
+[infection]
+enabled = true # The source contains unhooked clone functions; the panel wires them up.
+
+[finale]
+enabled = true
+phase_ticks = 360 # 34 phases x 18 sec = 10 min 12 sec. Scaled pacing, original order.
+
+[status]
+stun_ticks = 40
+burn_ticks = 80
+burn_interval_ticks = 10
+burn_source_damage = 5.0
+freeze_ticks = 60
+slow_ticks = 100
+vulnerability_ticks = 120
+vulnerability_multiplier = 1.5 # Luau calls this Weakness; it INCREASES incoming damage.
+blind_ticks = 80
+levitate_ticks = 60
+
+[stomp]
+damage = 9.0 # Minecraft HP. Source direct damage: 45.
+cooldown_ticks = 800 # Source: 40 sec per attacker.
+
+[visuals]
+sound_volume = 0.3 # Source master multiplier: .3. Uses Minecraft sounds.
+taunts = true
+
+[performance]
+particles_per_tick = 384 # Global packet/particle budget, all encounters combined.
+max_effects = 256 # Pending + active timed mechanics.
+max_targets_per_hit = 64
+max_minions = 32
+max_npcs = 24
+
+# Per-ability cooldown starts after its cast duration (source completion timestamp).
+# windup_ticks is the warning before activation; pulses bounds repeated strikes.
+# lingering_damage is used by lingering fields where applicable.
+# Finale uses finale.phase_ticks for duration; its finisher is the source's last blast.
+
+# Lightning Strike
+[abilities.lightning_strike]
+enabled = true
+damage = 220.0
+radius = 45.0
+knockback = 100.0
+duration_ticks = 200
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 200.0
+finisher_radius = 40.0
+lingering_damage = 33.0
+
+# Meteor Shower
+[abilities.meteor_shower]
+enabled = true
+damage = 280.0
+radius = 50.0
+knockback = 120.0
+duration_ticks = 220
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 260.0
+finisher_radius = 45.0
+lingering_damage = 42.0
+
+# Dimensional Rifts
+[abilities.dimensional_rifts]
+enabled = true
+damage = 180.0
+radius = 25.0
+knockback = 80.0
+duration_ticks = 220
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 250.0
+finisher_radius = 50.0
+lingering_damage = 27.0
+
+# Arcane Devastation
+[abilities.arcane_devastation]
+enabled = true
+damage = 240.0
+radius = 35.0
+knockback = 100.0
+duration_ticks = 220
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 300.0
+finisher_radius = 80.0
+lingering_damage = 36.0
+
+# Inferno Tornado
+[abilities.inferno_tornado]
+enabled = true
+damage = 60.0
+radius = 30.0
+knockback = 60.0
+duration_ticks = 200
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 350.0
+finisher_radius = 100.0
+lingering_damage = 9.0
+
+# Cosmic Annihilation
+[abilities.cosmic_annihilation]
+enabled = true
+damage = 200.0
+radius = 45.0
+knockback = 80.0
+duration_ticks = 240
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 200.0
+finisher_radius = 45.0
+lingering_damage = 30.0
+
+# Quantum Slice
+[abilities.quantum_slice]
+enabled = true
+damage = 180.0
+radius = 70.0
+knockback = 70.0
+duration_ticks = 160
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 350.0
+finisher_radius = 110.0
+lingering_damage = 27.0
+
+# Stellar Convergence
+[abilities.stellar_convergence]
+enabled = true
+damage = 85.0
+radius = 25.0
+knockback = 40.0
+duration_ticks = 240
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 200.0
+finisher_radius = 60.0
+lingering_damage = 12.75
+
+# Void Storm
+[abilities.void_storm]
+enabled = true
+damage = 90.0
+radius = 30.0
+knockback = 50.0
+duration_ticks = 240
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 180.0
+finisher_radius = 70.0
+lingering_damage = 13.5
+
+# Plasma Nova
+[abilities.plasma_nova]
+enabled = true
+damage = 180.0
+radius = 100.0
+knockback = 80.0
+duration_ticks = 200
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 300.0
+finisher_radius = 120.0
+lingering_damage = 27.0
+
+# Cryo Blast
+[abilities.cryo_blast]
+enabled = true
+damage = 60.0
+radius = 25.0
+knockback = 20.0
+duration_ticks = 180
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 110.0
+finisher_radius = 25.0
+lingering_damage = 9.0
+
+# Gravity Collapse
+[abilities.gravity_collapse]
+enabled = true
+damage = 100.0
+radius = 50.0
+knockback = 250.0
+duration_ticks = 180
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 500.0
+finisher_radius = 120.0
+lingering_damage = 15.0
+
+# Plasma Cascade
+[abilities.plasma_cascade]
+enabled = true
+damage = 95.0
+radius = 30.0
+knockback = 50.0
+duration_ticks = 240
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 220.0
+finisher_radius = 70.0
+lingering_damage = 14.25
+
+# Reality Shatter
+[abilities.reality_shatter]
+enabled = true
+damage = 45.0
+radius = 35.0
+knockback = 20.0
+duration_ticks = 200
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 250.0
+finisher_radius = 50.0
+lingering_damage = 6.75
+
+# Solar Flare Burst
+[abilities.solar_flare_burst]
+enabled = true
+damage = 120.0
+radius = 14.0
+knockback = 50.0
+duration_ticks = 160
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 450.0
+finisher_radius = 122.0
+lingering_damage = 18.0
+
+# Temporal Distortion
+[abilities.temporal_distortion]
+enabled = true
+damage = 20.0
+radius = 35.0
+knockback = 0.0
+duration_ticks = 240
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 250.0
+finisher_radius = 35.0
+lingering_damage = 3.0
+
+# Volcanic Eruption
+[abilities.volcanic_eruption]
+enabled = true
+damage = 150.0
+radius = 25.0
+knockback = 70.0
+duration_ticks = 200
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 100.0
+finisher_radius = 18.0
+lingering_damage = 22.5
+
+# Antimatter Annihilation
+[abilities.antimatter_annihilation]
+enabled = true
+damage = 250.0
+radius = 120.0
+knockback = 120.0
+duration_ticks = 220
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 400.0
+finisher_radius = 150.0
+lingering_damage = 37.5
+
+# Typhoon Cyclone
+[abilities.typhoon_cyclone]
+enabled = true
+damage = 30.0
+radius = 30.0
+knockback = 40.0
+duration_ticks = 180
+cooldown_ticks = 40
+windup_ticks = 40
+pulses = 8
+finisher_damage = 280.0
+finisher_radius = 50.0
+lingering_damage = 4.5
+
+# Nexus Finale
+[abilities.nexus_finale]
+enabled = true
+damage = 320.0
+radius = 35.0
+knockback = 130.0
+duration_ticks = 12000
+cooldown_ticks = 2400
+windup_ticks = 40
+pulses = 8
+finisher_damage = 10000.0
+finisher_radius = 999.0
+lingering_damage = 48.0

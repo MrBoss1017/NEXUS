@@ -1,0 +1,102 @@
+[
+  {
+    "id": "lightning_strike",
+    "name": "Lightning Strike",
+    "color": 16777113
+  },
+  {
+    "id": "meteor_shower",
+    "name": "Meteor Shower",
+    "color": 16737843
+  },
+  {
+    "id": "dimensional_rifts",
+    "name": "Dimensional Rifts",
+    "color": 10035967
+  },
+  {
+    "id": "arcane_devastation",
+    "name": "Arcane Devastation",
+    "color": 12277247
+  },
+  {
+    "id": "inferno_tornado",
+    "name": "Inferno Tornado",
+    "color": 16733440
+  },
+  {
+    "id": "cosmic_annihilation",
+    "name": "Cosmic Annihilation",
+    "color": 12294655
+  },
+  {
+    "id": "quantum_slice",
+    "name": "Quantum Slice",
+    "color": 5635993
+  },
+  {
+    "id": "stellar_convergence",
+    "name": "Stellar Convergence",
+    "color": 16763972
+  },
+  {
+    "id": "void_storm",
+    "name": "Void Storm",
+    "color": 6697881
+  },
+  {
+    "id": "plasma_nova",
+    "name": "Plasma Nova",
+    "color": 3403519
+  },
+  {
+    "id": "cryo_blast",
+    "name": "Cryo Blast",
+    "color": 12316415
+  },
+  {
+    "id": "gravity_collapse",
+    "name": "Gravity Collapse",
+    "color": 8921804
+  },
+  {
+    "id": "plasma_cascade",
+    "name": "Plasma Cascade",
+    "color": 16724957
+  },
+  {
+    "id": "reality_shatter",
+    "name": "Reality Shatter",
+    "color": 16733627
+  },
+  {
+    "id": "solar_flare_burst",
+    "name": "Solar Flare Burst",
+    "color": 16768341
+  },
+  {
+    "id": "temporal_distortion",
+    "name": "Temporal Distortion",
+    "color": 5636044
+  },
+  {
+    "id": "volcanic_eruption",
+    "name": "Volcanic Eruption",
+    "color": 16724736
+  },
+  {
+    "id": "antimatter_annihilation",
+    "name": "Antimatter Annihilation",
+    "color": 13430527
+  },
+  {
+    "id": "typhoon_cyclone",
+    "name": "Typhoon Cyclone",
+    "color": 13426158
+  },
+  {
+    "id": "nexus_finale",
+    "name": "Nexus Finale",
+    "color": 16729343
+  }
+]

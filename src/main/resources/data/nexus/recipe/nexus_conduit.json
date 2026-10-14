@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "OAO",
+    "ACA",
+    "OAO"
+  ],
+  "key": {
+    "O": "minecraft:obsidian",
+    "A": "minecraft:amethyst_shard",
+    "C": "nexus:nexus_core"
+  },
+  "result": {
+    "id": "nexus:nexus_conduit",
+    "count": 1
+  }
+}
